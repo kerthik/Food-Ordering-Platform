@@ -1,6 +1,13 @@
 import { restrautList } from "../contants";
 import Restranutcard from "../components/Restranutcard";
 import { useState } from "react";
+
+function filterData(searchText , RestranutsList){
+  return RestranutsList.filter((restra)=> restra.data.name.includes(searchText)
+
+);}
+
+
 const Body = ()=>{
   const [RestranutsList , setRestranutsList]=useState(restrautList)
   const [searchText, setSearchText]=useState(" ");
@@ -20,12 +27,9 @@ const Body = ()=>{
           />
            
           <button className="search-btn" onClick={()=>{
-            if(clicked==="True"){
-              setClicked("False")
-            }else{
-              setClicked("True")
-            }
- 
+          // need to filter the options 
+        const data =  filterData(searchText,RestranutsList);
+        setRestranutsList(data)
          }}>search
 
 
@@ -36,7 +40,7 @@ const Body = ()=>{
         </div>
           
         <div className="Restranut-list">
-          {restrautList.map((funt)=>{
+          {RestranutsList.map((funt)=>{
             return <Restranutcard {...funt.data }key = {funt.data.id }/>
           })}
         
