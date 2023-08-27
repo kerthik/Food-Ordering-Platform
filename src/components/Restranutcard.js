@@ -1,12 +1,12 @@
 import {IMG_CDN_LINK} from "../contants";
-const Restranutcard =({cloudinaryImageId,area,name,cuisines})=>{
+const Restranutcard =({cloudinaryImageId,name,areaName,cuisines})=>{
 
     return(
         <div className="card">
             <img src={IMG_CDN_LINK+cloudinaryImageId}/>
-            <h2>{area}</h2>
-            <h4>{name}</h4>
-            <h4>{cuisines.join(", ")} </h4>
+            <h2>{name}</h2>
+            <h3>{areaName}</h3>
+            <h4>{cuisines.join(", ")   } </h4>
         </div>
     )
 }
