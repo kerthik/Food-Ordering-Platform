@@ -732,4 +732,4 @@ export const restrautList = [
     },
     
   ];
-    
+    export default IMG_CDN_LINK;

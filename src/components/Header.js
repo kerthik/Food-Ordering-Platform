@@ -1,27 +1,31 @@
 
-import { useState } from "react";
-
+import { useState} from "react";
+import Logo from "../assets/img/logo.png"
+import { Link } from "react-router-dom";
 
 
 const Title = ()=>(
     <a href="/">
       < img className="logo"
        alt="google"
-       src= "https://lh3.googleusercontent.com/Em7AHf7XBH_RtGfCBVXz9RH8SM_pHkj3xPP-yd3cRguY1_Jc8fmqgx6WxnvGVyPV5xs5gL3HCD0FCuv6Xo4CwoY6ak4 "
+       src= {Logo}
        />
    </a>
    );
 
    const Header =()=>{
+    
+
+
     const [isLoggedIn, setIsLoggedIn]= useState(true)
         return(
         <div className="header">
            <Title />
             <div className="nav-items">
                 <ul>
-                    <li>Home</li>
-                    <li>About</li>
-                    <li>Contact Us</li>
+                    <li>< Link to = "/">Home</Link></li>
+                    <li>< Link to = "/about">About</Link></li>
+                    <li>< Link to ="/Contact">Contact Us</Link></li>
                     <li>Card</li>
                 </ul>
             </div>

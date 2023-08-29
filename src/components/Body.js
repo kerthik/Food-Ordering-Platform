@@ -3,8 +3,9 @@ import Restranutcard from "../components/Restranutcard";
 import { useState ,useEffect } from "react";
 import Shimmer from "./shimmer";
 
+
 function filterData(searchText , RestranutsList){
-  console.log(searchText)
+  //console.log(searchText)
   //searching the restranuts and making them low case of query and api  
   return RestranutsList.filter((restranutfilter)=> (restranutfilter?.info?.name.toLowerCase()?.includes(searchText.toLowerCase()))
 
@@ -18,8 +19,8 @@ const Body = ()=>{
     getRestranuts();
   },[]);
   async function  getRestranuts(){
-    const data = await fetch("https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
-    console.log(data)
+    const data = await fetch("https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=11.664325&lng=78.1460142&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
+   
     const json = await data.json();
    // console.log(json )
    setAllRestranurts( json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants );
@@ -28,7 +29,7 @@ const Body = ()=>{
 //to avoid rendering error 
   if(!allRestranurts) return  null ;
 //to avoid rendering in all restranuts 
-if(filteredRestranutsList.length===0) return <h1>No Restranut founds </h1>;
+//if(filteredRestranutsList.length===0) return <h1>No Restranut founds </h1>;//todo
   //conditional rendering
     return (allRestranurts.length===0)?<Shimmer/> :(    
         <>        
@@ -55,8 +56,8 @@ if(filteredRestranutsList.length===0) return <h1>No Restranut founds </h1>;
         </div>
           
         <div className="Restranut-list">
-          {filteredRestranutsList.map((funt)=>{
-            //console.log(RestranutsList)
+           {filteredRestranutsList.map((funt)=>{
+            console.log(filteredRestranutsList)
             return <Restranutcard {...funt.info}key={...funt.info.id}/>
           })}
         
