@@ -2,15 +2,13 @@ import { restrautList } from "../contants";
 import Restranutcard from "../components/Restranutcard";
 import { useState ,useEffect } from "react";
 import Shimmer from "./shimmer";
+import { Link } from "react-router-dom";
+import { filterData } from "../utils/Helper";
+import useOnline from "../utils/useOnline";
 
 
-function filterData(searchText , RestranutsList){
-  //console.log(searchText)
-  //searching the restranuts and making them low case of query and api  
-  return RestranutsList.filter((restranutfilter)=> (restranutfilter?.info?.name.toLowerCase()?.includes(searchText.toLowerCase()))
 
 
-);}
 const Body = ()=>{
   const [allRestranurts , setAllRestranurts]=useState([])
   const [filteredRestranutsList , setFilteredRestranutsList]=useState([])
@@ -25,7 +23,16 @@ const Body = ()=>{
    // console.log(json )
    setAllRestranurts( json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants );
    setFilteredRestranutsList( json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants );
-  } 
+  }
+  //isOnline using customized react hooks 
+  // const isOnline = useOnline()
+  // if(!isOnline){
+  //   return <h1>your are offline Please check Your internet connection    </h1>
+  // }
+  
+
+
+
 //to avoid rendering error 
   if(!allRestranurts) return  null ;
 //to avoid rendering in all restranuts 
@@ -57,9 +64,12 @@ const Body = ()=>{
           
         <div className="Restranut-list">
            {filteredRestranutsList.map((funt)=>{
-            console.log(filteredRestranutsList)
-            return <Restranutcard {...funt.info}key={...funt.info.id}/>
-          })}
+           
+            return (
+              <Link to={"/Restranut/" + funt.info.id} key={funt.info.id}>
+            <Restranutcard {...funt.info}/>
+            </Link>
+          )})}
         
         </div>
         </>
