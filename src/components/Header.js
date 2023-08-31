@@ -7,7 +7,7 @@ import useOnline  from "../utils/useOnline";
 
 const Title = ()=>(
     <a href="/">
-      < img className="logo"
+      < img className="h-28 px-2"
        alt="google"
        src= {Logo}
        />
@@ -21,18 +21,18 @@ const Title = ()=>(
 
     const [isLoggedIn, setIsLoggedIn]= useState(true)
         return(
-        <div className="header">
+        <div className="flex justify-between bg-pink-50 shadow-md sm:bg-gray-50">
            <Title />
             <div className="nav-items">
-                <ul>
-                    <li>< Link to = "/">Home</Link></li>
-                    <li>< Link to = "/about">About</Link></li>
-                    <li>< Link to ="/Contact">Contact Us</Link></li>
-                    <li>Card</li>
-                    <li>< Link to ="/instamart">Instamart</Link></li>
+                <ul  className="flex py-10">
+                    <li className="px-2">< Link to = "/">Home</Link></li>
+                    <li className="px-2">< Link to = "/about">About</Link></li>
+                    <li className="px-2">< Link to ="/Contact">Contact Us</Link></li>
+                    <li className="px-2">Card</li>
+                    <li className="px-2">< Link to ="/instamart">Instamart</Link></li>
                 </ul>
             </div>
-            <h1>{isOnline? "✅":"🔴"} </h1>
+            <h1 className="py-10">{isOnline? "✅":"🔴"} </h1>
             
             {(isLoggedIn?  <button onClick={()=>setIsLoggedIn(false)}>Logout</button> :<button onClick={()=>setIsLoggedIn(true)}>Login</button>  
            )} 

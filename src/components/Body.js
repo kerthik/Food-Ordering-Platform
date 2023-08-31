@@ -40,8 +40,8 @@ const Body = ()=>{
   //conditional rendering
     return (allRestranurts.length===0)?<Shimmer/> :(    
         <>        
-        <div className="Search-container">
-          <input type="text "className="Search-Input" placeholder="search"
+        <div className="p-5 bg-pink-100 my-5">
+          <input type="text "className="focus:bg-pink-100 p-2 m-2" placeholder="search"
           value={searchText} 
           onChange={(e)=>            
             setSearchText(e.target.value)}
@@ -49,7 +49,7 @@ const Body = ()=>{
           
           />
            
-          <button className="search-btn" onClick={()=>{
+          <button className="p-2 m-1 bg-purple-900 hover:bg-gray-500 text-white rounded-lg" onClick={()=>{
           // need to filter the options 
         const data =  filterData(searchText,allRestranurts);
         setFilteredRestranutsList(data)
@@ -62,7 +62,7 @@ const Body = ()=>{
 
         </div>
           
-        <div className="Restranut-list">
+        <div className=" flex flex-wrap">
            {filteredRestranutsList.map((funt)=>{
            
             return (
