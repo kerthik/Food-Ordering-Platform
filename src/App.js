@@ -10,7 +10,11 @@ import { createBrowserRouter ,RouterProvider,Outlet } from "react-router-dom";
 import RestranutMenu from "./components/RestranutMenu";
 import Profile from "./components/Profile";
 import Shimmer from "./components/shimmer";
-//import Instmart from "./components/Instamart";
+import { Provider } from "react-redux";
+import store from "./utils/store";
+import CardItems from "./components/CardItems";
+
+
 
 const Instamart =lazy(()=>import("./components/Instamart"))
 
@@ -18,11 +22,11 @@ const Applayout =()=>{
 
 
     return(
-    <>    
+    <Provider store ={store}>    
    <Header/>
     <Outlet/>
     <Footer/>
-    </>
+    </Provider>
     )
 }
 
@@ -64,6 +68,11 @@ const appRouter =createBrowserRouter([
     element:<Suspense fallback={<Shimmer/>}><Instamart/></Suspense>
     
    },
+   {
+    path:"/CardItems",
+    element:<CardItems/>
+   }
+ 
        
        ]
     },
