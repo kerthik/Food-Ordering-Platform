@@ -62,7 +62,7 @@ const Body = ()=>{
 
         </div>
           
-        <div className=" flex flex-wrap">
+        <div className=" flex flex-wrap w-full">
            {filteredRestranutsList.map((funt)=>{
            
             return (
@@ -72,7 +72,7 @@ const Body = ()=>{
           )})}
         
         </div>
-        </>
+        </> 
 
     )
 }

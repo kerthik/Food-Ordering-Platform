@@ -30,7 +30,7 @@ const addFoodItem=(item)=>{
      
       <div className="p-5">
         <h1>Menu</h1>
-        <ul>
+        <ul>  
           {CardMenu.map((item,index) => (
             <>
             <li key={index}>{item.card.info.name}- <button className="px-3 py-3 my-3 bg-green-100" onClick={()=>addFoodItem(item)}>Add</button></li>
