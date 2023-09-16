@@ -13,6 +13,7 @@ const Body = ()=>{
   const [allRestranurts , setAllRestranurts]=useState([])
   const [filteredRestranutsList , setFilteredRestranutsList]=useState([])
   const [searchText, setSearchText]=useState("");
+  console.log(searchText)
   useEffect(()=>{
     getRestranuts();
   },[]);
@@ -45,6 +46,8 @@ const Body = ()=>{
           value={searchText} 
           onChange={(e)=>            
             setSearchText(e.target.value)}
+
+        
           
           
           />
